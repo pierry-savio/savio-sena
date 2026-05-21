@@ -1,4 +1,4 @@
-let games_quantity = 5;
+let games_quantity = 10;
 
 const title_sumary = document.getElementById("title-sumary");
 title_sumary.textContent = `RESUMO - ÚLTIMOS ${games_quantity} JOGOS`;
