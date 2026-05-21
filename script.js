@@ -1,4 +1,4 @@
-let games_quantity = 50;
+let games_quantity = 10;
 
 const title_sumary = document.getElementById("title-sumary");
 title_sumary.textContent = `RESUMO - ÚLTIMOS ${games_quantity} JOGOS`;
@@ -48,16 +48,22 @@ async function renderContests() {
 
         let odd = 6 - even;
 
-        let skiped = "";
+        let skiped = [];
 
-        if
-        (
-            numbers[0] > 1 || numbers[1] > 10 || numbers[2] > 10 ||
-            numbers[3] > 10 || numbers[4] > 10 || numbers[5] > 10
-        ){
-            skiped += "1-10, ";
+        for (let start = 1; start <= 60; start += 10) {
+            let end = start + 9;
+
+            // verifica se existe algum número dentro da dezena
+            let hasNumber = numbers.some(n => n >= start && n <= end);
+
+            // se não existir, adiciona o final da dezena
+            if (!hasNumber) {
+                skiped.push(end);
+            }
         }
-        
+
+        skiped = skiped.join(", ");
+                
 
         contest.innerHTML = 
         `
