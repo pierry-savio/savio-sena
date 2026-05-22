@@ -1,4 +1,4 @@
-let games_quantity = 3;
+let games_quantity = 1;
 
 //Constests painel number
 const item_number = document.getElementById("item-number");
@@ -56,17 +56,17 @@ async function renderHighNumbers(){
     }
 
     if (highNumbers[4].h_number > 9){
-        n4.textContent = highNumbers[4].h_number;
+        n5.textContent = highNumbers[4].h_number;
     }
     else{
-        n4.textContent = "0"+highNumbers[4].h_number;
+        n5.textContent = "0"+highNumbers[4].h_number;
     }
 
     if (highNumbers[5].h_number > 9){
-        n4.textContent = highNumbers[5].h_number;
+        n6.textContent = highNumbers[5].h_number;
     }
     else{
-        n4.textContent = "0"+highNumbers[5].h_number;
+        n6.textContent = "0"+highNumbers[5].h_number;
     }
 
     //Elements n_reps
