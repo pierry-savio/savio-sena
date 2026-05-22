@@ -1,4 +1,4 @@
-let games_quantity = 1;
+let games_quantity = 10;
 
 //Constests painel number
 const item_number = document.getElementById("item-number");

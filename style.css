@@ -123,9 +123,15 @@ main{
     gap: 10px;
 }
 
+@media (orientation: landscape){
+    .contests{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 .contest{
     border: 1px solid rgba(255, 255, 255, 0.158);
-    background-color: rgba(66, 66, 66, 0.5);;
+    background-color: rgba(66, 66, 66, 0.5);
     padding: 10px;
     border-radius: 8px;
     display: flex;
@@ -180,6 +186,7 @@ main{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
 .input-game-quantity-container{
@@ -205,4 +212,125 @@ main{
     align-items: center;
     font-size: 25px;
     padding: 18px;
+}
+
+.even-odd-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.eop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.even-odd-painel-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.even-odd-painel{
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.158);
+    background-color: rgba(66, 66, 66, 0.5);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.even-odd-painel .odd-even{
+    font-size: 20px;
+}
+
+.even-odd-painel .even-odd-op{
+    display: flex;
+    gap: 5px;
+}
+
+.even-odd-painel .even-odd-op button{
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.329);
+    background-color: rgba(36, 36, 36, 0.603);
+    color: white;
+}
+
+.ten-skip-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.ten-skip-container .ten-skip-options{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.ten-skip-container .ten-skip-options p{
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.158);
+    background-color: rgba(66, 66, 66, 0.5);
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px;
+    transition: .3s ease;
+}
+
+.ten-skip-container .ten-skip-options p:hover{
+    background-color: rgba(66, 66, 66, 0.9);
+}
+
+.ten-skip-container .generate-games-button{
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(50, 121, 36);
+    color: white;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+}
+
+.generated-games-container{
+    border: 1px solid rgba(255, 255, 255, 0.158);
+    background-color: rgba(66, 66, 66, 0.5);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.generated-games{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+}
+
+.game{
+    display: flex;
+    gap: 8px;
+    font-size: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game .num{
+    background-color: rgb(213, 255, 215);
+    padding: 5px;
+    border-radius: 50%;
+    color: rgb(0, 128, 0);
+    font-size: 20px;
+    font-weight: 700;
 }
