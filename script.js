@@ -225,4 +225,27 @@ function getSkipedTen(numbers){
     return skiped.join(", ");
 }
 
+// GAME GENERATION
+const games_quantity_p = document.getElementById("games_quantity_p");
+const games_quantity_minus = document.getElementById("games_quantity_minus");
+const games_quantity_plus = document.getElementById("games_quantity_plus");
+
+games_quantity_minus.addEventListener('click', () =>{
+    minusGameQuantity();
+});
+
+games_quantity_plus.addEventListener('click', () =>{
+    addGameQuantity();
+});
+
+function minusGameQuantity(){
+    if (Number(games_quantity_p.textContent) > 1){
+        games_quantity_p.textContent = Number(games_quantity_p.textContent) - 1;
+    }
+}
+
+function addGameQuantity(){
+    games_quantity_p.textContent = Number(games_quantity_p.textContent) + 1;
+}
+
 

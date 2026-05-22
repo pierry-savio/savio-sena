@@ -212,6 +212,15 @@ main{
     align-items: center;
     font-size: 25px;
     padding: 18px;
+    transition: .1s ease;
+}
+
+.input-game-quantity-container button:hover{
+    background-color: rgba(66, 66, 66, 0.7);
+}
+
+.input-game-quantity-container button:active{
+    background-color: rgba(66, 66, 66, 1);
 }
 
 .even-odd-container{
