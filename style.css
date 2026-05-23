@@ -82,6 +82,38 @@ main{
     font-weight: 800;
 }
 
+.games_input_container{
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.games_input_container label{
+    font-size: 15px;
+    font-weight: 520;
+}
+
+.games_input_container input{
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.514);
+    border-radius: 4px;
+    height: 30px;
+    color: white;
+    padding: 10px;
+
+    font-size: 20px;
+    font-weight: 800;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.games_input_container input:active{
+    border: 1px solid rgb(255, 255, 255);
+}
+
+
 .main-numbers-container{
     display: flex;
     flex-direction: column;

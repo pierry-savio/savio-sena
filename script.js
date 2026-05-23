@@ -1,4 +1,4 @@
-let games_quantity = 10;
+const games_input = document.getElementById("games_input");
 
 //Constests painel number
 const item_number = document.getElementById("item-number");
@@ -7,6 +7,19 @@ item_number.textContent = 0;
 //Analysis painel
 const analysis_percent = document.getElementById("analysis_percent");
 analysis_percent.textContent = "0%";
+
+let games_quantity = 10;
+
+games_input.addEventListener('input', () => {
+    games_quantity = games_input.value;
+    analysis_percent.textContent = "0%";
+    renderHighNumbers();
+    renderContests();
+})
+
+games_input.addEventListener('click', () => {
+    games_input.value = null;
+})
 
 renderHighNumbers();
 renderContests();
@@ -21,11 +34,17 @@ async function renderHighNumbers(){
 
     //Elements n
     let n1 = document.getElementById("n1");
-    const n2 = document.getElementById("n2");
-    const n3 = document.getElementById("n3");
-    const n4 = document.getElementById("n4");
-    const n5 = document.getElementById("n5");
-    const n6 = document.getElementById("n6");
+    let n2 = document.getElementById("n2");
+    let n3 = document.getElementById("n3");
+    let n4 = document.getElementById("n4");
+    let n5 = document.getElementById("n5");
+    let n6 = document.getElementById("n6");
+    n1.textContent = "";
+    n2.textContent = "";
+    n3.textContent = "";
+    n4.textContent = "";
+    n5.textContent = "";
+    n6.textContent = "";
 
     if (highNumbers[0].h_number > 9){
         n1.textContent = highNumbers[0].h_number;
@@ -137,10 +156,13 @@ async function renderContests() {
     const games = await lastMega(games_quantity);
     console.log(games);
 
+    const contests = document.getElementById("contests");
+    contests.innerHTML = "";
+
     for (let i = 0; i < games_quantity; i++){
 
         //Father
-        const contests = document.getElementById("contests");
+        
 
         //Contest
         let contest = document.createElement('div');
@@ -343,6 +365,14 @@ ten6.addEventListener('click', () => {
     }
 });
 
+function skippedTenClean(){
+    ten1.classList.remove("select");
+    ten2.classList.remove("select");
+    ten3.classList.remove("select");
+    ten4.classList.remove("select");
+    ten5.classList.remove("select");
+    ten6.classList.remove("select");
+}
 
 function getSkipedTensQuantity(){
     let skipedTensQuantity = 0;
@@ -420,16 +450,33 @@ generate_button.addEventListener('click', () => {
 
         let nu = Array.from({ length: 6 }, () => randomAllowed(skippedTens));
 
-        const needed_even = Number(eop_even_n.textContent);
+        let needed_even = Number(eop_even_n.textContent);
 
-        while (
-            countEven(nu) !== needed_even ||
-            new Set(nu).size !== nu.length
-        ) {
-            nu = Array.from({ length: 6 }, () => randomAllowed(skippedTens));
+        const allowed = [];
+        for (let n = 1; n <= 60; n++) {
+            const tenIndex = Math.ceil(n / 10) - 1;
+            if (!skippedTens[tenIndex]) allowed.push(n);
         }
 
-        nu.sort((a, b) => a - b);
+        const availableEvens = allowed.filter(n => n % 2 === 0).length;
+        const availableOdds = allowed.filter(n => n % 2 !== 0).length;
+
+        // Verifica se é possível montar o jogo com as restrições dadas
+        if (availableEvens < needed_even || availableOdds < (6 - needed_even)) {
+            alert("Combinação impossível! Libere mais dezenas ou ajuste a quantidade de pares.");
+            skippedTenClean();
+        } else {
+            nu = Array.from({ length: 6 }, () => randomAllowed(skippedTens));
+
+            while (
+                (countEven(nu) !== needed_even && Number(eop_even_n.textContent) > -1) ||
+                new Set(nu).size !== nu.length
+            ) {
+                nu = Array.from({ length: 6 }, () => randomAllowed(skippedTens));
+            }
+
+            nu.sort((a, b) => a - b);
+        }
 
         for (let i = 0; i<nu.length; i++){
             if (nu[i] < 10){
