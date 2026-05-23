@@ -370,14 +370,158 @@ function getSkipedTensQuantity(){
     if (ten6.classList.contains("select")){
         skipedTensQuantity++;
     }
-
-    console.log(skipedTensQuantity);
+    
     return skipedTensQuantity;
+}
+
+function getSkippedTens() {
+    const tens = [ten1, ten2, ten3, ten4, ten5, ten6];
+    return tens.map(ten => ten.classList.contains("select"));
+}
+
+function randomAllowed(skippedTens) {
+    // Monta a lista de números permitidos (exclui as dezenas marcadas como true)
+    const allowed = [];
+
+    for (let n = 1; n <= 60; n++) {
+        const tenIndex = Math.ceil(n / 10) - 1; // 1-10 → 0, 11-20 → 1, etc.
+        if (!skippedTens[tenIndex]) {
+            allowed.push(n);
+        }
+    }
+
+    return allowed[Math.floor(Math.random() * allowed.length)];
 }
 
 //TODO - Lógica de gerar os jogos - Botão de gerar jogos abaixo 👇
 const generate_button = document.getElementById("generate-button");
 
 generate_button.addEventListener('click', () => {
-    //lógica aqui
+    const game_quantity = Number(games_quantity_p.textContent);
+    
+    const generated_games_container = document.getElementById("generated-games-container");
+    generated_games_container.innerHTML = "";
+
+    const generate_games_title = document.createElement('h3');
+    generate_games_title.textContent = `${game_quantity} Jogos Gerados`;
+
+    const generated_games = document.createElement('div');
+    generated_games.classList.add("generated-games");
+
+
+    let games = [];
+
+    for(let i = 0; i<game_quantity; i++){
+
+        let game = document.createElement('div');
+        game.classList.add("game");
+
+        const skippedTens = getSkippedTens();
+
+        let nu = Array.from({ length: 6 }, () => randomAllowed(skippedTens));
+
+        const needed_even = Number(eop_even_n.textContent);
+
+        while (
+            countEven(nu) !== needed_even ||
+            new Set(nu).size !== nu.length
+        ) {
+            nu = Array.from({ length: 6 }, () => randomAllowed(skippedTens));
+        }
+
+        nu.sort((a, b) => a - b);
+
+        for (let i = 0; i<nu.length; i++){
+            if (nu[i] < 10){
+                nu[i] = "0" + nu[i];
+            }
+        }
+
+        let n = i+1;
+        if (n < 10){ n = "0" + n};
+
+        game.innerHTML =
+            `
+            <p>#${n}</p>
+            <p class="num">${nu[0]}</p>
+            <p class="num">${nu[1]}</p>
+            <p class="num">${nu[2]}</p>
+            <p class="num">${nu[3]}</p>
+            <p class="num">${nu[4]}</p>
+            <p class="num">${nu[5]}</p>
+            `;
+
+        games.push(game);
+    }
+
+    generated_games_container.appendChild(generate_games_title);
+    generated_games_container.appendChild(generated_games);
+
+    for (let i = 0; i<games.length; i++){
+        generated_games_container.appendChild(games[i]);
+    }
 });
+
+function countEven(game){
+    let even = 0;
+
+    for (let i = 0; i<game.length; i++){
+        if (game[i]%2 === 0){ even++ };
+    }
+
+    return even;
+}
+
+function countOdd(game){
+    let odd = 0;
+
+    for (let i = 0; i<game.length; i++){
+        if (game[i]%2 !== 0){ odd++ };
+    }
+
+    return odd;
+}
+
+/*
+
+<div class="generated-games-container">
+    <h3>Jogos gerados</h3>
+
+    <div class="generated-games">
+        <div class="game">
+            <p>#1</p>
+            <p class="num">07</p>
+            <p class="num">12</p>
+            <p class="num">35</p>
+            <p class="num">42</p>
+            <p class="num">53</p>
+            <p class="num">58</p>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="game">
+            <p>#2</p>
+            <p class="num">07</p>
+            <p class="num">12</p>
+            <p class="num">35</p>
+            <p class="num">42</p>
+            <p class="num">53</p>
+            <p class="num">58</p>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="game">
+            <p>#3</p>
+            <p class="num">07</p>
+            <p class="num">12</p>
+            <p class="num">35</p>
+            <p class="num">42</p>
+            <p class="num">53</p>
+            <p class="num">58</p>
+        </div>
+    </div>
+</div>
+
+*/
