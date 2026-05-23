@@ -17,7 +17,7 @@ title_sumary.textContent = `RESUMO - ÚLTIMOS ${games_quantity} JOGOS`;
 
 async function renderHighNumbers(){
     //Variable
-    const highNumbers = await getNumbersHigh();
+    const highNumbers = await getNumbersHigh(6);
 
     //Elements n
     let n1 = document.getElementById("n1");
@@ -85,7 +85,7 @@ async function renderHighNumbers(){
 
 }
 
-async function getNumbersHigh() {
+async function getNumbersHigh(quantity) {
     const games = await lastMega(games_quantity);
     let numb = [];
 
@@ -105,7 +105,7 @@ async function getNumbersHigh() {
     // Pega os 6 que mais repetem + quantidade
     let topN = Object.entries(count)
         .sort((a, b) => b[1] - a[1])
-        .slice(0, 6)
+        .slice(0, quantity)
         .map(([h_number, times]) => ({
             h_number: Number(h_number),
             times: times
@@ -231,21 +231,153 @@ const games_quantity_minus = document.getElementById("games_quantity_minus");
 const games_quantity_plus = document.getElementById("games_quantity_plus");
 
 games_quantity_minus.addEventListener('click', () =>{
-    minusGameQuantity();
-});
-
-games_quantity_plus.addEventListener('click', () =>{
-    addGameQuantity();
-});
-
-function minusGameQuantity(){
     if (Number(games_quantity_p.textContent) > 1){
         games_quantity_p.textContent = Number(games_quantity_p.textContent) - 1;
     }
-}
+});
 
-function addGameQuantity(){
+games_quantity_plus.addEventListener('click', () =>{
     games_quantity_p.textContent = Number(games_quantity_p.textContent) + 1;
+});
+
+//Odd and even
+const eop_even_n = document.getElementById("eop-even-n");
+const eop_odd_n = document.getElementById("eop-odd-n");
+
+const eop_even_minus = document.getElementById("eop-even-minus");
+const eop_even_plus = document.getElementById("eop-even-plus");
+const eop_odd_minus = document.getElementById("eop-odd-minus");
+const eop_odd_plus = document.getElementById("eop-odd-plus");
+
+eop_even_minus.addEventListener('click', () => {
+    eop_even_n.textContent = Number(eop_even_n.textContent) - 1;
+    eop_odd_n.textContent = Number(eop_odd_n.textContent) + 1;
+});
+
+eop_even_plus.addEventListener('click', () => {
+    eop_even_n.textContent = Number(eop_even_n.textContent) + 1;
+    eop_odd_n.textContent = Number(eop_odd_n.textContent) - 1;
+});
+
+eop_odd_minus.addEventListener('click', () => {
+    eop_odd_n.textContent = Number(eop_odd_n.textContent) - 1;
+    eop_even_n.textContent = Number(eop_even_n.textContent) + 1;
+});
+
+eop_odd_plus.addEventListener('click', () => {
+    eop_odd_n.textContent = Number(eop_odd_n.textContent) + 1;
+    eop_even_n.textContent = Number(eop_even_n.textContent) - 1;
+});
+
+//Skip tens
+const ten1 = document.getElementById("ten1");
+const ten2 = document.getElementById("ten2");
+const ten3 = document.getElementById("ten3");
+const ten4 = document.getElementById("ten4");
+const ten5 = document.getElementById("ten5");
+const ten6 = document.getElementById("ten6");
+
+ten1.addEventListener('click', () => {
+    if (ten1.classList.contains("select")){
+        ten1.classList.remove("select");
+    }
+    else{
+        if (getSkipedTensQuantity() < 5){
+            ten1.classList.add("select");
+        }
+    }
+});
+
+ten2.addEventListener('click', () => {
+    if (ten2.classList.contains("select")){
+        ten2.classList.remove("select");
+    }
+    else{
+        if (getSkipedTensQuantity() < 5){
+            ten2.classList.add("select");
+        }
+    }
+});
+
+ten3.addEventListener('click', () => {
+    if (ten3.classList.contains("select")){
+        ten3.classList.remove("select");
+    }
+    else{
+        if (getSkipedTensQuantity() < 5){
+            ten3.classList.add("select");
+        }
+    }
+});
+
+ten4.addEventListener('click', () => {
+    if (ten4.classList.contains("select")){
+        ten4.classList.remove("select");
+    }
+    else{
+        if (getSkipedTensQuantity() < 5){
+            ten4.classList.add("select");
+        }
+    }
+});
+
+ten5.addEventListener('click', () => {
+    if (ten5.classList.contains("select")){
+        ten5.classList.remove("select");
+    }
+    else{
+        if (getSkipedTensQuantity() < 5){
+            ten5.classList.add("select");
+        }
+    }
+});
+
+ten6.addEventListener('click', () => {
+    if (ten6.classList.contains("select")){
+        ten6.classList.remove("select");
+    }
+    else{
+        if (getSkipedTensQuantity() < 5){
+            ten6.classList.add("select");
+        }
+    }
+});
+
+
+function getSkipedTensQuantity(){
+    let skipedTensQuantity = 0;
+
+    if (ten1.classList.contains("select")){
+        skipedTensQuantity++;
+    }
+
+    if (ten2.classList.contains("select")){
+        skipedTensQuantity++;
+    }
+
+    if (ten3.classList.contains("select")){
+        skipedTensQuantity++;
+    }
+
+    if (ten4.classList.contains("select")){
+        skipedTensQuantity++;
+    }
+
+    if (ten5.classList.contains("select")){
+        skipedTensQuantity++;
+    }
+
+    if (ten6.classList.contains("select")){
+        skipedTensQuantity++;
+    }
+
+    console.log(skipedTensQuantity);
+    return skipedTensQuantity;
 }
 
+//TODO - Lógica de gerar os jogos - Botão de gerar jogos abaixo 👇
+const generate_button = document.getElementById("generate-button");
 
+generate_button.addEventListener('click', () => {
+    //lógica aqui
+});
