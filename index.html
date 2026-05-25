@@ -1,164 +1,167 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Savio Sena</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!--FONTS-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
 
     <!--FAVICON-->
-    <link rel="icon" type="image/png" href="./img/favicon.png">
-</head>
-<body>
-
+    <link rel="icon" type="image/png" href="./img/favicon.png" />
+  </head>
+  <body>
     <!-------------------------HEADER----------------------------->
     <header>
-        <img src="./img/point.png" alt="points icon">
-        <h1><span class="highlight">Savio</span> Sena</h1>
+      <img src="./img/point.png" alt="points icon" />
+      <h1><span class="highlight">Savio</span> Sena</h1>
     </header>
 
     <main>
+      <section class="analysis">
+        <div class="title-container">
+          <h2>📊 <span class="highlight">Análise</span></h2>
+          <div class="line"></div>
+        </div>
 
-        <section class="analysis">
-            <div class="title-container">
-                <h2>📊 <span class="highlight">Análise</span></h2>
-                <div class="line"></div>
+        <div class="games_input_container">
+          <label for="games_input">QUANTIDADE DE JOGOS</label>
+          <input type="number" id="games_input" />
+          <button class="games_input_button" id="games_input_button">
+            Enviar
+          </button>
+        </div>
+
+        <div class="summary-games-container">
+          <h3 id="title-sumary">RESUMO - ÚLTIMOS 10 JOGOS</h3>
+
+          <div class="items-container">
+            <div class="summary-games-container item">
+              <p>Concursos</p>
+              <p class="item-number" id="item-number">10</p>
             </div>
 
-            <div class="games_input_container">
-                <label for="games_input">QUANTIDADE DE JOGOS</label>
-                <input type="number" id="games_input">
+            <div class="summary-games-container item">
+              <p>Análise</p>
+              <p class="item-number" id="analysis_percent">100%</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="main-numbers-container">
+          <h3>NÚMEROS COM ALTA OCORRÊNCIA</h3>
+
+          <div class="main-numbers">
+            <div class="main-number-container">
+              <p class="main-number" id="n1">12</p>
+              <p class="repetitions" id="n1_reps">4x</p>
             </div>
 
-            <div class="summary-games-container">
-                <h3 id="title-sumary">RESUMO - ÚLTIMOS 10 JOGOS</h3>
+            <div class="main-number-container">
+              <p class="main-number" id="n2">23</p>
+              <p class="repetitions" id="n2_reps">4x</p>
+            </div>
 
-                <div class="items-container">
-                    <div class="summary-games-container item">
-                        <p>Concursos</p>
-                        <p class="item-number" id="item-number">10</p>
-                    </div>
+            <div class="main-number-container">
+              <p class="main-number" id="n3">23</p>
+              <p class="repetitions" id="n3_reps">4x</p>
+            </div>
 
-                    <div class="summary-games-container item">
-                        <p>Análise</p>
-                        <p class="item-number" id="analysis_percent">100%</p>
-                    </div>
+            <div class="main-number-container">
+              <p class="main-number" id="n4">23</p>
+              <p class="repetitions" id="n4_reps">4x</p>
+            </div>
+
+            <div class="main-number-container">
+              <p class="main-number" id="n5">23</p>
+              <p class="repetitions" id="n5_reps">4x</p>
+            </div>
+
+            <div class="main-number-container">
+              <p class="main-number" id="n6">23</p>
+              <p class="repetitions" id="n6_reps">4x</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contests-container">
+          <h3>ÚLTIMOS SORTEIOS</h3>
+
+          <div class="contests" id="contests"></div>
+        </div>
+      </section>
+
+      <section class="generate-game">
+        <div class="title-container">
+          <h2>📊 <span class="highlight">Gerar jogos</span></h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="game-quantity-container">
+          <h3>QUANTIDADE DE JOGOS</h3>
+          <div class="input-game-quantity-container">
+            <button id="games_quantity_minus">-</button>
+            <p id="games_quantity_p">5</p>
+            <button id="games_quantity_plus">+</button>
+          </div>
+        </div>
+
+        <div class="even-odd-container">
+          <h3>PARES E ÍMPARES POR JOGO</h3>
+
+          <div class="even-odd-painel-container">
+            <div class="even-odd-painel">
+              <div class="eop">
+                <p>Pares</p>
+                <div class="even-odd-op">
+                  <button id="eop-even-minus">-</button>
+                  <button id="eop-even-plus">+</button>
                 </div>
+              </div>
+              <p class="odd-even" id="eop-even-n">3</p>
             </div>
 
-            <div class="main-numbers-container">
-                <h3>NÚMEROS COM ALTA OCORRÊNCIA</h3>
-
-                <div class="main-numbers">
-                    <div class="main-number-container">
-                        <p class="main-number" id="n1">12</p>
-                        <p class="repetitions" id="n1_reps">4x</p>
-                    </div>
-
-                    <div class="main-number-container">
-                        <p class="main-number" id="n2">23</p>
-                        <p class="repetitions" id="n2_reps">4x</p>
-                    </div>
-
-                    <div class="main-number-container">
-                        <p class="main-number" id="n3">23</p>
-                        <p class="repetitions" id="n3_reps">4x</p>
-                    </div>
-
-                    <div class="main-number-container">
-                        <p class="main-number" id="n4">23</p>
-                        <p class="repetitions" id="n4_reps">4x</p>
-                    </div>
-
-                    <div class="main-number-container">
-                        <p class="main-number" id="n5">23</p>
-                        <p class="repetitions" id="n5_reps">4x</p>
-                    </div>
-
-                    <div class="main-number-container">
-                        <p class="main-number" id="n6">23</p>
-                        <p class="repetitions" id="n6_reps">4x</p>
-                    </div>
+            <div class="even-odd-painel">
+              <div class="eop">
+                <p>Ímpares</p>
+                <div class="even-odd-op">
+                  <button id="eop-odd-minus">-</button>
+                  <button id="eop-odd-plus">+</button>
                 </div>
+              </div>
+              <p class="odd-even" id="eop-odd-n">3</p>
             </div>
+          </div>
+        </div>
 
-            <div class="contests-container">
-                <h3>ÚLTIMOS SORTEIOS</h3>
+        <div class="ten-skip-container">
+          <h3>PULAR DEZENAS</h3>
+          <div class="ten-skip-options">
+            <p id="ten1">01-10</p>
+            <p id="ten2">11-20</p>
+            <p id="ten3">21-30</p>
+            <p id="ten4">31-40</p>
+            <p id="ten5">41-50</p>
+            <p id="ten6">51-60</p>
+          </div>
 
-                <div class="contests" id="contests">
-                </div>
-            </div>
-        </section>
+          <button class="generate-games-button" id="generate-button">
+            🤖 GERAR JOGOS
+          </button>
+        </div>
 
-        <section class="generate-game">
-            <div class="title-container">
-                <h2>📊 <span class="highlight">Gerar jogos</span></h2>
-                <div class="line"></div>
-            </div>
-
-            <div class="game-quantity-container">
-                <h3>QUANTIDADE DE JOGOS</h3>
-                <div class="input-game-quantity-container">
-                    <button id="games_quantity_minus">-</button>
-                    <p id="games_quantity_p">5</p>
-                    <button id="games_quantity_plus">+</button>
-                </div>
-            </div>
-
-
-            <div class="even-odd-container">
-
-                <h3>PARES E ÍMPARES POR JOGO</h3>
-
-                <div class="even-odd-painel-container">
-                    <div class="even-odd-painel">
-                        <div class="eop">
-                            <p>Pares</p>
-                            <div class="even-odd-op">
-                                <button id="eop-even-minus">-</button>
-                                <button id="eop-even-plus">+</button>
-                            </div>
-                        </div>
-                        <p class="odd-even" id="eop-even-n">3</p>
-                    </div>
-
-                    <div class="even-odd-painel">
-                        <div class="eop">
-                            <p>Ímpares</p>
-                            <div class="even-odd-op">
-                                <button id="eop-odd-minus">-</button>
-                                <button id="eop-odd-plus">+</button>
-                            </div>
-                        </div>
-                        <p class="odd-even" id="eop-odd-n">3</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ten-skip-container">
-                <h3>PULAR DEZENAS</h3>
-                <div class="ten-skip-options">
-                    <p id="ten1">01-10</p>
-                    <p id="ten2">11-20</p>
-                    <p id="ten3">21-30</p>
-                    <p id="ten4">31-40</p>
-                    <p id="ten5">41-50</p>
-                    <p id="ten6">51-60</p>
-                </div>
-
-                <button class="generate-games-button" id="generate-button">🤖 GERAR JOGOS</button>
-            </div>
-
-            <div class="generated-games-container" id="generated-games-container">
-                <!--GENERATED GAMES HERE-->
-            </div>
-        </section>
+        <div class="generated-games-container" id="generated-games-container">
+          <!--GENERATED GAMES HERE-->
+        </div>
+      </section>
     </main>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
