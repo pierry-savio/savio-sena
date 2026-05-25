@@ -333,6 +333,49 @@ main {
   background-color: rgba(66, 66, 66, 1);
 }
 
+.skip-numbers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.skip-numbers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.158);
+  background-color: rgba(66, 66, 66, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.skip-number {
+  background-color: rgb(213, 255, 215);
+  padding: 5px;
+  border-radius: 50%;
+  color: rgb(0, 128, 0);
+  font-weight: 800;
+  font-size: 20px;
+}
+
+/*
+
+<div class="skip-numbers-container">
+  <h3>PULAR NÚMEROS</h3>
+  <div class="skip-numbers">
+    <p class="skip-number">01</p>
+    <p class="skip-number">02</p>
+    <p class="skip-number">03</p>
+    <p class="skip-number">04</p>
+    <p class="skip-number">05</p>
+    <p class="skip-number">06</p>
+  </div>
+</div>
+
+*/
+
 .ten-skip-container {
   display: flex;
   flex-direction: column;
