@@ -358,6 +358,14 @@ main {
   color: rgb(0, 128, 0);
   font-weight: 800;
   font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.skip-number.marked {
+  background-color: rgb(255, 213, 213);
+  color: rgb(128, 0, 0);
+  transition: 0.3s ease;
 }
 
 /*

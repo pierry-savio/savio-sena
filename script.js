@@ -520,3 +520,49 @@ function countOdd(game) {
 
   return odd;
 }
+
+//SKIP NUMBERS
+
+const skip_numbers = document.getElementById("skip-numbers");
+
+let num_p = [];
+
+for (let i = 0; i<60; i++){
+
+  let p = document.createElement("p");
+  p.classList.add("skip-number");
+  p.id = "skip-number-" + (i+1);
+
+  if (i+1 > 9){
+    p.textContent = i+1;
+  }
+  else{
+    p.textContent = "0" + (i+1);
+  }
+
+  num_p.push(p);
+}
+
+for (let i = 0; i<num_p.length; i++){
+  skip_numbers.appendChild(num_p[i]);
+}
+
+skip_numbers.addEventListener('click', (e) => {
+    if (e.target.tagName === 'P'){
+      e.target.classList.toggle("marked");
+    }
+});
+
+/*
+
+<div class="skip-numbers-container" id="skip-numbers-container">
+          <h3>PULAR NÚMEROS</h3>
+          <div class="skip-numbers">
+            <p class="skip-number">01</p>
+            <p class="skip-number">02</p>
+            <p class="skip-number">03</p>
+            <p class="skip-number">04</p>
+            <p class="skip-number">05</p>
+            <p class="skip-number">06</p>
+
+*/
