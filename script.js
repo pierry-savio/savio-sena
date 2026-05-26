@@ -394,12 +394,13 @@ function getSkippedTens() {
 }
 
 function randomAllowed(skippedTens) {
-  // Monta a lista de números permitidos (exclui as dezenas marcadas como true)
+  const skippedNumbers = getSkippedNumbers();
+
   const allowed = [];
 
   for (let n = 1; n <= 60; n++) {
-    const tenIndex = Math.ceil(n / 10) - 1; // 1-10 → 0, 11-20 → 1, etc.
-    if (!skippedTens[tenIndex]) {
+    const tenIndex = Math.ceil(n / 10) - 1;
+    if (!skippedTens[tenIndex] && !skippedNumbers.includes(n)) {
       allowed.push(n);
     }
   }
@@ -407,7 +408,6 @@ function randomAllowed(skippedTens) {
   return allowed[Math.floor(Math.random() * allowed.length)];
 }
 
-//TODO - Lógica de gerar os jogos - Botão de gerar jogos abaixo 👇
 const generate_button = document.getElementById("generate-button");
 
 generate_button.addEventListener("click", () => {
@@ -436,16 +436,17 @@ generate_button.addEventListener("click", () => {
 
     let needed_even = Number(eop_even_n.textContent);
 
+    const skippedNumbers = getSkippedNumbers();
+
     const allowed = [];
     for (let n = 1; n <= 60; n++) {
       const tenIndex = Math.ceil(n / 10) - 1;
-      if (!skippedTens[tenIndex]) allowed.push(n);
+      if (!skippedTens[tenIndex] && !skippedNumbers.includes(n)) allowed.push(n);
     }
 
     const availableEvens = allowed.filter((n) => n % 2 === 0).length;
     const availableOdds = allowed.filter((n) => n % 2 !== 0).length;
 
-    // Verifica se é possível montar o jogo com as restrições dadas
     if (availableEvens < needed_even || availableOdds < 6 - needed_even) {
       alert(
         "Combinação impossível! Libere mais dezenas ou ajuste a quantidade de pares.",
@@ -553,16 +554,7 @@ skip_numbers.addEventListener('click', (e) => {
     }
 });
 
-/*
-
-<div class="skip-numbers-container" id="skip-numbers-container">
-          <h3>PULAR NÚMEROS</h3>
-          <div class="skip-numbers">
-            <p class="skip-number">01</p>
-            <p class="skip-number">02</p>
-            <p class="skip-number">03</p>
-            <p class="skip-number">04</p>
-            <p class="skip-number">05</p>
-            <p class="skip-number">06</p>
-
-*/
+function getSkippedNumbers() {
+  return Array.from(document.querySelectorAll('.skip-number.marked'))
+    .map(p => parseInt(p.textContent));
+}
