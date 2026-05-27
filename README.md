@@ -4,7 +4,7 @@
 
 > Ferramenta web para análise de resultados e geração de jogos da Mega Sena, criada com carinho para meu pai, **Savio**.
 
-👉 [Acesse clicando aqui] (https://pierry-savio.github.io/savio-sena/) 🔗
+👉 [Acesse clicando aqui](https://pierry-savio.github.io/savio-sena/) 🔗
 
 ---
 
