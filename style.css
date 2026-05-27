@@ -49,6 +49,16 @@ body {
   font-style: normal;
   color: rgb(193, 193, 193);
   padding: 0 20px 20px 20px;
+  max-width: 700px;
+  justify-self: center;
+  border: none;
+}
+
+@media (orientation: landscape){
+  body{
+    border-left: 1px solid rgba(255, 255, 255, 0.158);
+    border-right: 1px solid rgba(255, 255, 255, 0.158);
+  }
 }
 
 main {
@@ -180,7 +190,7 @@ main {
 
 @media (orientation: landscape) {
   .contests {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
